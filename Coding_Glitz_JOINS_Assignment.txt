@@ -1,0 +1,713 @@
+-- Create SYSTEM.DEPT table
+CREATE TABLE DEPT (
+	DEPTNO INT PRIMARY KEY,
+	DNAME VARCHAR(14),
+	LOC VARCHAR(13)
+);
+
+-- Create SYSTEM.EMP table
+CREATE TABLE EMP (
+	EMPNO INT PRIMARY KEY,
+	ENAME VARCHAR(10),
+	JOB VARCHAR(9),
+	MGR INT,
+	HIREDATE DATE,
+	SAL VARCHAR,
+	DEPTNO INT,
+	CONSTRAINT FK_DEPTNO FOREIGN KEY (DEPTNO) REFERENCES DEPT (DEPTNO)
+);
+
+-- Create SYSTEM.LIBRARY table
+CREATE TABLE LIBRARY (
+	TRANID INT PRIMARY KEY,
+	EMPID INT,
+	BOOKID INT,
+	ISSUEDATE TIMESTAMP,
+	RETURNDATE TIMESTAMP,
+	CONSTRAINT SYS_C007513 FOREIGN KEY (EMPID) REFERENCES EMP (EMPNO),
+	CONSTRAINT SYS_C007514 FOREIGN KEY (BOOKID) REFERENCES BOOKS (BOOKID)
+);
+
+-- Create SYSTEM.BOOKS table
+CREATE TABLE BOOKS (
+	BOOKID INT PRIMARY KEY,
+	BOOKNAME VARCHAR(100),
+	CATEGORY VARCHAR(20),
+	AUTHOR VARCHAR(50),
+	PUBLICATIONDATE DATE,
+	LANGUAGE VARCHAR(20),
+	DESCRIPTION VARCHAR(1000)
+);
+
+-- INSERT VALUES IN DEPT TABLE
+INSERT INTO
+	DEPT (DEPTNO, DNAME, LOC)
+VALUES
+	(10, 'ACCOUNTING', 'NEW YORK'),
+	(20, 'RESEARCH', 'DALLAS'),
+	(30, 'SALES', 'CHICAGO'),
+	(40, 'OPERATIONS', 'BOSTON'),
+	(50, 'IT', 'HYDERABAD');
+
+-- INSERT VALUES IN EMP TABLE
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		7839,
+		'KING',
+		'PRESIDENT',
+		NULL,
+		TO_DATE('17-11-81', 'DD-MM-RR'),
+		5000,
+		10
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		7698,
+		'BLAKE',
+		'MANAGER',
+		7839,
+		TO_DATE('01-05-81', 'DD-MM-RR'),
+		2850,
+		30
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		7782,
+		'CLARK',
+		'MANAGER',
+		7839,
+		TO_DATE('09-06-81', 'DD-MM-RR'),
+		2450,
+		10
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		7566,
+		'JONES',
+		'MANAGER',
+		7839,
+		TO_DATE('02-04-81', 'DD-MM-RR'),
+		2975,
+		20
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		7788,
+		'SCOTT',
+		'ANALYST',
+		7566,
+		TO_DATE('19-04-87', 'DD-MM-RR'),
+		3000,
+		20
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		7902,
+		'FORD',
+		'ANALYST',
+		7566,
+		TO_DATE('03-12-81', 'DD-MM-RR'),
+		3000,
+		20
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		7369,
+		'SMITH',
+		'CLERK',
+		7902,
+		TO_DATE('17-12-80', 'DD-MM-RR'),
+		50,
+		20
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		7499,
+		'ALLEN',
+		'SALESMAN',
+		7698,
+		TO_DATE('20-02-81', 'DD-MM-RR'),
+		1600,
+		30
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		7521,
+		'WARD',
+		'SALESMAN',
+		7698,
+		TO_DATE('22-02-81', 'DD-MM-RR'),
+		1250,
+		30
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		7654,
+		'MARTIN',
+		'SALESMAN',
+		7698,
+		TO_DATE('28-09-81', 'DD-MM-RR'),
+		1250,
+		30
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		7844,
+		'TURNER',
+		'SALESMAN',
+		7698,
+		TO_DATE('08-09-81', 'DD-MM-RR'),
+		1500,
+		30
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		7876,
+		'ADAMS',
+		'CLERK',
+		7788,
+		TO_DATE('23-05-87', 'DD-MM-RR'),
+		1100,
+		20
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		7900,
+		'JAMES',
+		'CLERK',
+		7698,
+		TO_DATE('03-12-81', 'DD-MM-RR'),
+		8005,
+		30
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		8001,
+		'ANABELLE',
+		'CLERK',
+		7698,
+		TO_DATE('03-12-81', 'DD-MM-RR'),
+		5500,
+		20
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		8002,
+		'olive',
+		'CLERK',
+		7698,
+		TO_DATE('03-12-81', 'DD-MM-RR'),
+		5800,
+		20
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		8003,
+		'OLIVE',
+		'CLERK',
+		7698,
+		TO_DATE('03-12-81', 'DD-MM-RR'),
+		5800,
+		20
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		8004,
+		'KINGS',
+		'CLERK',
+		7698,
+		TO_DATE('03-12-81', 'DD-MM-RR'),
+		5800,
+		20
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		8005,
+		'KINE',
+		'CLERK',
+		7698,
+		TO_DATE('03-12-81', 'DD-MM-RR'),
+		5800,
+		20
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		8006,
+		'KILLEY',
+		'SALESMAN',
+		7788,
+		TO_DATE('12-06-90', 'DD-MM-RR'),
+		7500,
+		NULL
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		8007,
+		'Jason',
+		'developer',
+		7788,
+		TO_DATE('12-06-90', 'DD-MM-RR'),
+		7500,
+		NULL
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		8008,
+		'BIPLAB  ',
+		'CRELK',
+		7788,
+		TO_DATE('12-07-89', 'DD-MM-RR'),
+		8999,
+		20
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		8009,
+		'BIPLAB',
+		'SALESMAN',
+		7698,
+		TO_DATE('12-03-22', 'DD-MM-RR'),
+		9000,
+		30
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		8010,
+		'Jason',
+		'SALESMAN',
+		7698,
+		TO_DATE('12-03-22', 'DD-MM-RR'),
+		9000,
+		30
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(
+		8011,
+		'KINE',
+		'CLERK',
+		7788,
+		TO_DATE('16-09-22', 'DD-MM-RR'),
+		9800,
+		30
+	);
+
+INSERT INTO
+	EMP (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES
+	(1234, 'BIPLAB', NULL, NULL, NULL, 1000, 50);
+
+-- INSERT VALUES IN LIBRARY TABLE
+INSERT INTO
+	LIBRARY (TRANID, EMPID, BOOKID, ISSUEDATE, RETURNDATE)
+VALUES
+	(
+		100001,
+		8010,
+		1001,
+		TO_TIMESTAMP(
+			'02-03-22 00:00:00.000000',
+			'DD-MM-RR HH24:MI:SS.FF'
+		),
+		TO_TIMESTAMP(
+			'15-03-22 00:00:00.000000',
+			'DD-MM-RR HH24:MI:SS.FF'
+		)
+	);
+
+INSERT INTO
+	LIBRARY (TRANID, EMPID, BOOKID, ISSUEDATE, RETURNDATE)
+VALUES
+	(
+		100003,
+		8010,
+		1002,
+		TO_TIMESTAMP(
+			'19-09-22 00:00:00.000000',
+			'DD-MM-RR HH24:MI:SS.FF'
+		),
+		TO_TIMESTAMP(
+			'22-09-22 00:00:00.000000',
+			'DD-MM-RR HH24:MI:SS.FF'
+		)
+	);
+
+INSERT INTO
+	LIBRARY (TRANID, EMPID, BOOKID, ISSUEDATE, RETURNDATE)
+VALUES
+	(
+		100004,
+		8006,
+		1001,
+		TO_TIMESTAMP(
+			'19-01-22 00:00:00.000000',
+			'DD-MM-RR HH24:MI:SS.FF'
+		),
+		TO_TIMESTAMP(
+			'22-02-22 00:00:00.000000',
+			'DD-MM-RR HH24:MI:SS.FF'
+		)
+	);
+
+INSERT INTO
+	LIBRARY (TRANID, EMPID, BOOKID, ISSUEDATE, RETURNDATE)
+VALUES
+	(
+		100005,
+		8006,
+		1002,
+		TO_TIMESTAMP(
+			'12-05-22 00:00:00.000000',
+			'DD-MM-RR HH24:MI:SS.FF'
+		),
+		TO_TIMESTAMP(
+			'12-05-22 00:00:00.000000',
+			'DD-MM-RR HH24:MI:SS.FF'
+		)
+	);
+
+INSERT INTO
+	LIBRARY (TRANID, EMPID, BOOKID, ISSUEDATE, RETURNDATE)
+VALUES
+	(
+		100006,
+		8006,
+		1003,
+		TO_TIMESTAMP(
+			'08-07-22 00:00:00.000000',
+			'DD-MM-RR HH24:MI:SS.FF'
+		),
+		TO_TIMESTAMP(
+			'09-08-22 00:00:00.000000',
+			'DD-MM-RR HH24:MI:SS.FF'
+		)
+	);
+
+INSERT INTO
+	LIBRARY (TRANID, EMPID, BOOKID, ISSUEDATE, RETURNDATE)
+VALUES
+	(
+		100007,
+		8006,
+		1004,
+		TO_TIMESTAMP(
+			'19-04-22 00:00:00.000000',
+			'DD-MM-RR HH24:MI:SS.FF'
+		),
+		TO_TIMESTAMP(
+			'22-09-22 00:00:00.000000',
+			'DD-MM-RR HH24:MI:SS.FF'
+		)
+	);
+
+INSERT INTO
+	LIBRARY (TRANID, EMPID, BOOKID, ISSUEDATE, RETURNDATE)
+VALUES
+	(
+		100008,
+		8001,
+		1001,
+		TO_TIMESTAMP(
+			'19-02-22 00:00:00.000000',
+			'DD-MM-RR HH24:MI:SS.FF'
+		),
+		NULL
+	);
+
+INSERT INTO
+	LIBRARY (TRANID, EMPID, BOOKID, ISSUEDATE, RETURNDATE)
+VALUES
+	(
+		100009,
+		8001,
+		1002,
+		TO_TIMESTAMP(
+			'12-09-22 00:00:00.000000',
+			'DD-MM-RR HH24:MI:SS.FF'
+		),
+		NULL
+	);
+
+INSERT INTO
+	LIBRARY (TRANID, EMPID, BOOKID, ISSUEDATE, RETURNDATE)
+VALUES
+	(
+		100010,
+		8001,
+		1003,
+		TO_TIMESTAMP(
+			'08-09-22 00:00:00.000000',
+			'DD-MM-RR HH24:MI:SS.FF'
+		),
+		NULL
+	);
+
+INSERT INTO
+	LIBRARY (TRANID, EMPID, BOOKID, ISSUEDATE, RETURNDATE)
+VALUES
+	(
+		100002,
+		8010,
+		1001,
+		TO_TIMESTAMP(
+			'19-09-22 00:00:00.000000',
+			'DD-MM-RR HH24:MI:SS.FF'
+		),
+		NULL
+	);
+
+-- INSERT VALUES IN BOOKS TABLE
+INSERT INTO
+	BOOKS (
+		BOOKID,
+		BOOKNAME,
+		CATEGORY,
+		AUTHOR,
+		PUBLICATIONDATE,
+		LANGUAGE,
+		DESCRIPTION
+	)
+VALUES
+	(
+		1001,
+		'In Search Of Her',
+		'Fiction',
+		'Deesha Sangani',
+		TO_DATE('12-08-20', 'DD-MM-RR'),
+		'English',
+		'A mother who would stop at nothing for her child, is a dangerous woman to mess with.'
+	);
+
+INSERT INTO
+	BOOKS (
+		BOOKID,
+		BOOKNAME,
+		CATEGORY,
+		AUTHOR,
+		PUBLICATIONDATE,
+		LANGUAGE,
+		DESCRIPTION
+	)
+VALUES
+	(
+		1002,
+		'You are the best wife',
+		'Fiction',
+		'Ajaya Pandey',
+		TO_DATE('23-11-15', 'DD-MM-RR'),
+		'English',
+		'You Are The Best Wife: A True Love Story is a story about how people find true love and comfort in dissimilarities; about how two people with absolutely different ideologies meet and fall in love'
+	);
+
+INSERT INTO
+	BOOKS (
+		BOOKID,
+		BOOKNAME,
+		CATEGORY,
+		AUTHOR,
+		PUBLICATIONDATE,
+		LANGUAGE,
+		DESCRIPTION
+	)
+VALUES
+	(
+		1003,
+		'Something I Never Told You',
+		'Adventure',
+		'Shravya Bhinder',
+		TO_DATE('02-05-19', 'DD-MM-RR'),
+		'English',
+		NULL
+	);
+
+INSERT INTO
+	BOOKS (
+		BOOKID,
+		BOOKNAME,
+		CATEGORY,
+		AUTHOR,
+		PUBLICATIONDATE,
+		LANGUAGE,
+		DESCRIPTION
+	)
+VALUES
+	(
+		1004,
+		'Chanakya Neeti',
+		'Literature',
+		'Ashwini Parashar',
+		TO_DATE('01-08-22', 'DD-MM-RR'),
+		'Hindi',
+		'सिकंदर ने पंजाब, गांधर आदि राज्यों को जीतकर उन्हें अपने अधीन कर लिया था। वहां यवन सैनिकों के अत्याचारों से लोग त्रास्त थे। चारों तरफ आतंक व्याप्त था। बहू-बेटियों की अस्मिता असुरक्षित थी। यवन पूरे भारत को जीतना चाहते थे। स्थिति बड़ी दयनीय थी। यवनों के राज्य का विस्तार पूरे भारतवर्ष में हो, यह चाणक्य जैसे आत्मसम्मानी देशभक्त के लिए असहनीय थ'
+	);
+
+-- QUESTIONS 
+-- 1(write a sql query to display employee name of employees reporting to employee 7839)
+
+SELECT
+	E.ENAME AS E_NAME
+FROM EMP AS E JOIN
+EMP AS ER ON
+E.MGR = ER.EMPNO
+WHERE ER.EMPNO = 7839;
+
+-- 2(write a sql query to display maximum salary of employees working in chicago)
+
+SELECT  MAX(E.SAL) AS MAX_SALARY
+FROM EMP AS E  JOIN
+DEPT AS D ON E.DEPTNO = D.DEPTNO
+WHERE D.LOC = 'CHICAGO';
+
+-- 3(display department name and total amount spent by each department as salary for their employees)
+
+ALTER TABLE EMP ALTER COLUMN SAL TYPE DECIMAL(10, 2) USING SAL::DECIMAL;
+
+SELECT 
+	D.DNAME AS DEPT_NAME,
+	SUM(E.SAL) AS TOTAL_AMOUNT
+FROM EMP AS E JOIN DEPT AS D
+ON E.DEPTNO = D.DEPTNO
+GROUP BY DEPT_NAME
+ORDER BY TOTAL_AMOUNT DESC;
+
+-- 4(write a sql query to display employee name who were hired before their managers)
+
+SELECT 
+	EMPLOYEER.ENAME AS EMPLOYEER_NAME
+FROM EMP AS EMPLOYEER JOIN 
+EMP AS MANAGER ON
+EMPLOYEER.MGR = MANAGER.EMPNO
+WHERE EMPLOYEER.HIREDATE < MANAGER.HIREDATE;
+
+-- 5(write a sql query to display employee names and book names for the books which are not returned)
+
+SELECT 
+	E.ENAME AS EMPLOYEE_NAME,
+	B.BOOKNAME AS BOOK_NAME
+FROM EMP AS E INNER JOIN LIBRARY AS L ON
+E.EMPNO = L.EMPID INNER JOIN BOOKS AS B ON
+L.BOOKID = B.BOOKID
+WHERE RETURNDATE IS NULL;
+
+-- 6(write a sql query to display employee name along with the total numbers of books issued by each employee in the year 2022)
+
+SELECT 
+	E.ENAME AS EMPLOYEE_NAME,
+	COUNT(L.EMPID) AS TOTAL_NO_OF_BOOKS
+FROM EMP AS E INNER JOIN 
+LIBRARY AS L ON
+E.EMPNO = L.EMPID
+WHERE EXTRACT(YEAR FROM L.ISSUEDATE)=2022
+GROUP BY E.ENAME;
+
+-- 7(write a sql query to display employee name and location of employees who have issued the book chanakya neeti)
+
+SELECT E.ENAME AS EMPLOPYEE_NAME,D.LOC AS LOCATION
+FROM EMP AS E INNER JOIN LIBRARY AS L 
+ON E.EMPNO = L.EMPID
+INNER JOIN BOOKS AS B ON
+B.BOOKID = L.BOOKID LEFT JOIN 
+DEPT AS D ON E.DEPTNO = D.DEPTNO
+WHERE B.BOOKNAME = 'Chanakya Neeti';
+
+--8(write a sql query to display all employee names along with their department name in descending orderof the book issue date)
+
+SELECT
+	E.ENAME AS E_NAME,
+	D.DNAME AS DEPT_NAME
+FROM EMP AS E LEFT JOIN DEPT AS D
+ON E.DEPTNO = D.DEPTNO INNER JOIN LIBRARY AS L
+ON E.EMPNO = L.EMPID
+ORDER BY L.ISSUEDATE DESC;
+
+-- 9(write a sql query to display all book names whIch were issued by atleast 1 employee)
+
+SELECT 
+	DISTINCT B.BOOKNAME AS BOOK_NAME
+FROM BOOKS AS B
+INNER JOIN LIBRARY AS L ON B.BOOKID = L.BOOKID;
+
+-- 10(write a sql query to display last three letter of employee name,location,book name issued by employee,the author name
+-- for emloyees whose salary is less than 10000 and hired in the year 1981)
+
+SELECT 
+    RIGHT(E.ENAME,3) AS E_NAME_L_3_LETTERS,  
+    D.LOC AS LOCATION ,
+	B.BOOKNAME AS BOOK_NAME,
+	B.AUTHOR AS AUTHOR_NAME
+FROM EMP AS E 
+LEFT JOIN DEPT AS D ON E.DEPTNO = D.DEPTNO
+INNER JOIN LIBRARY AS L ON E.EMPNO = L.EMPID
+INNER JOIN BOOKS AS B ON B.BOOKID = L.BOOKID
+WHERE E.SAL<10000 
+AND EXTRACT(YEAR FROM E.HIREDATE)=1981;
